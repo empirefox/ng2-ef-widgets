@@ -1,0 +1,70 @@
+{
+  "schema": {
+    "type": "object",
+    "title": "Comment",
+    "properties": {
+      "background": {
+        "title": "Background",
+        "type": "string"
+      },
+      "fa": {
+        "title": "Font Awesome",
+        "type": "string"
+      },
+      "img": {
+        "title": "Qiniu Img",
+        "type": "string"
+      },
+      "smd": {
+        "title": "Markdown Editor",
+        "type": "string"
+      },
+      "email": {
+        "title": "Email",
+        "type": "string",
+        "pattern": "^\\S+@\\S+$",
+        "description": "Email will be used for evil."
+      },
+      "comment": {
+        "title": "Comment",
+        "type": "string",
+        "maxLength": 20,
+        "validationMessage": "Don't be greedy!"
+      }
+    },
+    "required": [
+      "background",
+      "email",
+      "comment"
+    ]
+  },
+  "form": [
+    {
+      "key": "background",
+      "type": "bg"
+    },
+    {
+      "key": "fa",
+      "type": "fa"
+    },
+    {
+      "key": "img",
+      "type": "img"
+    },
+    {
+      "key": "smd",
+      "type": "smd"
+    },
+    "email",
+    {
+      "key": "comment",
+      "type": "textarea",
+      "placeholder": "Make a comment"
+    },
+    {
+      "type": "submit",
+      "style": "btn-info",
+      "title": "OK"
+    }
+  ]
+}

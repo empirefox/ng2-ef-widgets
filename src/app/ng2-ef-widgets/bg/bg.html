@@ -1,0 +1,10 @@
+<div [class]="options?.htmlClass">
+	<label *ngIf="options?.title"
+		[class]="options?.labelHtmlClass"
+		[class.sr-only]="options?.notitle"
+		[innerHTML]="options?.title"></label>
+	<bg-input #inputControl
+		[readonly]="options?.readonly ? 'readonly' : null"
+		[ngModel]="controlValue"
+		(ngModelChange)="updateValue($event)"></bg-input>
+</div>

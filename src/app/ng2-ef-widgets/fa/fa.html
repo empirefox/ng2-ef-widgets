@@ -1,0 +1,11 @@
+<div [class]="options?.htmlClass">
+	<label *ngIf="options?.title"
+		(click)="inputControl.onEdit()"
+		[class]="options?.labelHtmlClass"
+		[class.sr-only]="options?.notitle"
+		[innerHTML]="options?.title"></label>
+	<fa-input #inputControl
+		[readonly]="options?.readonly ? 'readonly' : null"
+		[ngModel]="controlValue"
+		(ngModelChange)="updateValue($event)"></fa-input>
+</div>

@@ -1,0 +1,31 @@
+{
+  "name": "ng2-ef-widgets",
+  "version": "0.0.1",
+  "description": "Custom widgets for angular2-json-schema-form, based on ng2-ef-inputs",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/empirefox/ng2-ef-widgets.git"
+  },
+  "keywords": [
+    "ng2-ef-inputs",
+    "angular2",
+    "JSON Schema",
+    "Form builder"
+  ],
+  "author": "https://github.com/empirefox",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/empirefox/ng2-ef-widgets/issues"
+  },
+  "homepage": "https://github.com/empirefox/ng2-ef-widgets#readme",
+  "dependencies": {
+    "@types/lodash": "*",
+    "angular2-json-schema-form": "^0.3.0-alpha.13",
+    "ng2-bg-input": "*",
+    "ng2-smd-input": "*"
+  }
+}
