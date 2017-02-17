@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 const jsonFormObject = require('./asf-simple.json');
 
@@ -9,7 +10,9 @@ const jsonFormObject = require('./asf-simple.json');
   styleUrls: ['./jsf.scss']
 })
 export class Jsf {
-  jsonFormObject = jsonFormObject;
+  options: Observable<any>;
+  schema = jsonFormObject.schema;
+  layout = jsonFormObject.form;
   liveFormData: any;
   formIsValid: any;
   formValidationErrors: any;
@@ -17,8 +20,14 @@ export class Jsf {
   constructor() {
   }
 
+  ngOnInit() {
+    this.options = Observable.of({
+      qiniuData: { siteid: 20 },
+    });
+  }
+
   get prettyValidationErrors() {
-    if (!this.formValidationErrors) return null;
+    if (!this.formValidationErrors) { return null; }
     let prettyValidationErrors = '';
     for (let error of this.formValidationErrors) {
       prettyValidationErrors += (error.dataPath.length ?

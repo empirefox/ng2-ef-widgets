@@ -49,11 +49,14 @@
     },
     {
       "key": "img",
-      "type": "img"
+      "type": "img",
+      "qiniu": "profile",
+      "prefix": "h/"
     },
     {
       "key": "smd",
-      "type": "smd"
+      "type": "smd",
+      "prefix": "s/{{siteid}}/"
     },
     "email",
     {

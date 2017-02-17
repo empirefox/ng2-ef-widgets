@@ -4,6 +4,8 @@
 		[class.sr-only]="options?.notitle"
 		[innerHTML]="options?.title"></label>
 	<bg-input #inputControl
+		[qiniu]="qiniu"
+		[prefix]="prefix"
 		[readonly]="options?.readonly ? 'readonly' : null"
 		[ngModel]="controlValue"
 		(ngModelChange)="updateValue($event)"></bg-input>

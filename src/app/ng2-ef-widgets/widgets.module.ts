@@ -2,14 +2,16 @@ import { NgModule, ModuleWithProviders, ANALYZE_FOR_ENTRY_COMPONENTS, APP_INITIA
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { Ng2AmapInputModule } from 'ng2-amap-input';
-import { Ng2BgInputModule } from 'ng2-bg-input';
-import { Ng2FaInputModule } from 'ng2-fa-input';
-import { Ng2SvgPatternInputModule } from 'ng2-pattern-input';
-import { Ng2ColorfulInputModule } from 'ng2-colorful-input';
-import { Ng2TriangifyInputModule } from 'ng2-trianglify-input';
-import { Ng2QiniuImageInputModule } from 'ng2-qiniu-img-input';
-import { Ng2SmdInputModule } from 'ng2-smd-input';
+import {
+  Ng2AmapInputModule,
+  Ng2BgInputModule,
+  Ng2FaInputModule,
+  Ng2SvgPatternInputModule,
+  Ng2ColorfulInputModule,
+  Ng2TriangifyInputModule,
+  Ng2QiniuImageInputModule,
+  Ng2SmdInputModule,
+} from 'ng2-ef-inputs';
 
 import { JsonSchemaFormModule, WidgetLibraryService, FrameworkLibraryService } from 'angular2-json-schema-form/src';
 import { Bootstrap3Component } from 'angular2-json-schema-form/src/frameworks/bootstrap-3.component';
@@ -18,6 +20,8 @@ import { BgWidgetComponent } from './bg/bg';
 import { FaWidgetComponent } from './fa/fa';
 import { ImgWidgetComponent } from './img/img';
 import { SmdWidgetComponent } from './smd/smd';
+
+import { WidgetsService, WIDGETS_QINIU_CONFIG_NAME, WIDGETS_QINIU_PREFIX } from './widgets.service';
 
 export function widgetsInitializer(frameworkLibraryService: FrameworkLibraryService, widgetLibrary: WidgetLibraryService) {
   return () => {
@@ -64,10 +68,19 @@ export function widgetsInitializer(frameworkLibraryService: FrameworkLibraryServ
 })
 export class EfWidgetsModule {
 
-  static forRoot(): ModuleWithProviders {
+  static forRoot(qiniuConfigName = 'default', qiniuPrefix = ''): ModuleWithProviders {
     return {
       ngModule: EfWidgetsModule,
       providers: [
+        WidgetsService,
+        {
+          provide: WIDGETS_QINIU_CONFIG_NAME,
+          useValue: qiniuConfigName,
+        },
+        {
+          provide: WIDGETS_QINIU_PREFIX,
+          useValue: qiniuPrefix,
+        },
         {
           provide: APP_INITIALIZER,
           useFactory: widgetsInitializer,

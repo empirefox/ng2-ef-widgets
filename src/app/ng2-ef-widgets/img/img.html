@@ -5,6 +5,8 @@
 		[class.sr-only]="options?.notitle"
 		[innerHTML]="options?.title"></label>
 	<qiniu-img-input #inputControl
+		[qiniu]="qiniu"
+		[prefix]="prefix"
 		[readonly]="options?.readonly ? 'readonly' : null"
 		[ngModel]="controlValue"
 		(ngModelChange)="updateValue($event)"></qiniu-img-input>

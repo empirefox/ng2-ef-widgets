@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col-md-12">
       <json-schema-form
-        [form]="jsonFormObject"
+        [options]="options|async"
+        [schema]="schema"
+        [layout]="layout"
         (onChanges)="onChanges($event)"
         (onSubmit)="onSubmit($event)"
         (isValid)="isValid($event)"

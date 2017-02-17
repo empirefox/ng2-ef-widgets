@@ -2,10 +2,10 @@ import { Component, Input, OnInit, Optional } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { JsonSchemaFormService } from 'angular2-json-schema-form/src';
 import { Modal } from 'angular2-modal/plugins/bootstrap';
-import { QiniuImageService } from 'ng2-qiniu-img-input';
+import * as _ from 'lodash';
 import { StackFa } from 'fa-tool';
-import { FaSelectService } from 'ng2-fa-input';
-import { MdeCallback } from 'ng2-smd-input';
+import { QiniuService, QiniuImageService, FaSelectService, MdeCallback } from 'ng2-ef-inputs';
+import { WidgetsService } from '../widgets.service';
 
 @Component({
   selector: 'ng2sf-smd-input',
@@ -25,6 +25,8 @@ export class SmdWidgetComponent implements OnInit {
 
   constructor(
     public modal: Modal,
+    public widgetsService: WidgetsService,
+    @Optional() private qiniuService: QiniuService,
     @Optional() private qiniuImageService: QiniuImageService,
     @Optional() private faSelectService: FaSelectService,
     private jsf: JsonSchemaFormService) { }
@@ -62,7 +64,12 @@ export class SmdWidgetComponent implements OnInit {
   }
 
   onAddImage(cb: MdeCallback) {
-    this.qiniuImageService.open().then(dialog => dialog.result.then((src: string) => cb(src)));
+    let qiniuData = this.jsf.globalOptions.qiniuData;
+    let qiniu = (this.options && this.options.qiniu) || this.widgetsService.qiniuConfigName;
+    let prefix = (this.options && this.options.prefix) || this.widgetsService.qiniuPrefix;
+    qiniu = qiniuData ? _.template(qiniu)(qiniuData) : qiniu;
+    prefix = qiniuData ? _.template(prefix)(qiniuData) : prefix;
+    this.qiniuImageService.open(qiniu, prefix).then(dialog => dialog.result.then((src: string) => cb(src)));
   }
 
   onAddVideo(cb: MdeCallback) {
