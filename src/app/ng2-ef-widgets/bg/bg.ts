@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import * as _ from 'lodash';
+import { template } from 'lodash-es';
 import { JsonSchemaFormService } from 'angular2-json-schema-form/src';
 import { Qiniu, QiniuService } from 'ng2-ef-inputs/ng2-qiniu-img-input';
 import { WidgetsService } from '../widgets.service';
@@ -17,8 +17,8 @@ export class BgWidgetComponent implements OnInit {
   formControl: AbstractControl;
   controlName: string;
   controlValue: any;
-  controlDisabled: boolean = false;
-  boundControl: boolean = true;
+  controlDisabled = false;
+  boundControl = true;
   options: any;
 
   constructor(
@@ -32,15 +32,15 @@ export class BgWidgetComponent implements OnInit {
   }
 
   get qiniu(): Qiniu {
-    let qiniuData = this.jsf.globalOptions.qiniuData;
-    let qiniu = (this.options && this.options.qiniu) || this.widgetsService.qiniuConfigName;
-    return this.qiniuService.get(qiniuData ? _.template(qiniu)(qiniuData) : qiniu);
+    const qiniuData = this.jsf.globalOptions.qiniuData;
+    const qiniu = (this.options && this.options.qiniu) || this.widgetsService.qiniuConfigName;
+    return this.qiniuService.get(qiniuData ? template(qiniu)(qiniuData) : qiniu);
   }
 
   get prefix() {
-    let qiniuData = this.jsf.globalOptions.qiniuData;
-    let prefix = (this.options && this.options.prefix) || this.widgetsService.qiniuPrefix;
-    return qiniuData ? _.template(prefix)(qiniuData) : prefix;
+    const qiniuData = this.jsf.globalOptions.qiniuData;
+    const prefix = (this.options && this.options.prefix) || this.widgetsService.qiniuPrefix;
+    return qiniuData ? template(prefix)(qiniuData) : prefix;
   }
 
   updateValue(event) {

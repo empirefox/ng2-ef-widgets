@@ -1,0 +1,16 @@
+<div [class]="options?.htmlClass">
+	<label *ngIf="options?.title"
+		(click)="inputControl.onEdit()"
+		[class]="options?.labelHtmlClass"
+		[class.sr-only]="options?.notitle"
+		[innerHTML]="options?.title"></label>
+	<phone-input #inputControl
+		[pattern]="options?.pattern"
+		[payload]="options?.payload"
+		[placeholder]="options?.placeholder"
+		[required]="options?.required"
+		[start]="options?.start"
+		[readonly]="options?.readonly"
+		[ngModel]="controlValue"
+		(ngModelChange)="updateValue($event)"></phone-input>
+</div>

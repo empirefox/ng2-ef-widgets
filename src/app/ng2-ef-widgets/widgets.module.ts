@@ -6,6 +6,7 @@ import {
   Ng2AmapInputModule,
   Ng2BgInputModule,
   Ng2FaInputModule,
+  Ng2PhoneInputModule,
   Ng2SvgPatternInputModule,
   Ng2ColorfulInputModule,
   Ng2TriangifyInputModule,
@@ -19,6 +20,7 @@ import { Bootstrap3Component } from 'angular2-json-schema-form/src/frameworks/bo
 import { BgWidgetComponent } from './bg/bg';
 import { FaWidgetComponent } from './fa/fa';
 import { ImgWidgetComponent } from './img/img';
+import { PhoneWidgetComponent } from './phone/phone';
 import { SmdWidgetComponent } from './smd/smd';
 
 import { WidgetsService, WIDGETS_QINIU_CONFIG_NAME, WIDGETS_QINIU_PREFIX } from './widgets.service';
@@ -29,6 +31,7 @@ export function widgetsInitializer(frameworkLibraryService: FrameworkLibraryServ
     widgetLibrary.registerWidget('bg', BgWidgetComponent);
     widgetLibrary.registerWidget('fa', FaWidgetComponent);
     widgetLibrary.registerWidget('img', ImgWidgetComponent);
+    widgetLibrary.registerWidget('phone', PhoneWidgetComponent);
     widgetLibrary.registerWidget('smd', SmdWidgetComponent);
   };
 }
@@ -44,12 +47,13 @@ export function widgetsInitializer(frameworkLibraryService: FrameworkLibraryServ
     Ng2BgInputModule,
     Ng2ColorfulInputModule,
     Ng2FaInputModule,
+    Ng2PhoneInputModule,
     Ng2QiniuImageInputModule,
     Ng2SmdInputModule,
     Ng2SvgPatternInputModule,
     Ng2TriangifyInputModule,
   ],
-  declarations: [BgWidgetComponent, FaWidgetComponent, ImgWidgetComponent, SmdWidgetComponent],
+  declarations: [BgWidgetComponent, FaWidgetComponent, ImgWidgetComponent, PhoneWidgetComponent, SmdWidgetComponent],
   exports: [
     FormsModule,
     ReactiveFormsModule,
@@ -59,11 +63,12 @@ export function widgetsInitializer(frameworkLibraryService: FrameworkLibraryServ
     Ng2BgInputModule,
     Ng2ColorfulInputModule,
     Ng2FaInputModule,
+    Ng2PhoneInputModule,
     Ng2QiniuImageInputModule,
     Ng2SmdInputModule,
     Ng2SvgPatternInputModule,
     Ng2TriangifyInputModule,
-    BgWidgetComponent, FaWidgetComponent, ImgWidgetComponent, SmdWidgetComponent,
+    BgWidgetComponent, FaWidgetComponent, ImgWidgetComponent, PhoneWidgetComponent, SmdWidgetComponent,
   ],
 })
 export class EfWidgetsModule {
@@ -89,7 +94,7 @@ export class EfWidgetsModule {
         },
         {
           provide: ANALYZE_FOR_ENTRY_COMPONENTS,
-          useValue: [BgWidgetComponent, FaWidgetComponent, ImgWidgetComponent, SmdWidgetComponent],
+          useValue: [BgWidgetComponent, FaWidgetComponent, ImgWidgetComponent, PhoneWidgetComponent, SmdWidgetComponent],
           multi: true,
         },
       ],
